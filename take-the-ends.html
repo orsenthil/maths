@@ -1,4 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Take the Ends</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -97,6 +103,15 @@
     margin:0 0 12px;
     text-wrap:balance;
   }
+  .back-link{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    margin-bottom:22px;
+  }
+  .back-link:hover{color:var(--gold);}
   .dek{
     font-size:1.08rem;
     color:var(--ink);
@@ -327,8 +342,10 @@
     input[type="text"]{width:170px;}
   }
 </style>
-
+</head>
+<body>
 <div class="wrap">
+  <a class="back-link" href="index.html">← All puzzles</a>
 
   <header>
     <p class="eyebrow">A two-player game-theory puzzle</p>
@@ -717,3 +734,5 @@
 
 })();
 </script>
+</body>
+</html>

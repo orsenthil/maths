@@ -31,6 +31,8 @@
     transition:transform .12s ease, border-color .12s ease;
   }
   a.entry:hover{transform:translateY(-2px);border-color:var(--gold);}
+  a.entry.teal{border-left-color:var(--teal);}
+  a.entry.teal:hover{border-color:var(--teal);}
   a.entry .name{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.15rem;margin-bottom:4px;}
   a.entry .desc{font-size:14px;color:var(--ink-soft);}
   .foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);}
@@ -42,6 +44,12 @@
   <h1>Maths</h1>
   <p class="dek">Small interactive pieces built around math and game-theory puzzles.</p>
   <ul>
+    <li>
+      <a class="entry teal" href="the-vanishing-digit.html">
+        <div class="name">The Vanishing Digit</div>
+        <div class="desc">A two-player mental-math duel — reverse a 3-digit number, subtract, and race to name the digit you weren't shown.</div>
+      </a>
+    </li>
     <li>
       <a class="entry" href="take-the-ends.html">
         <div class="name">Take the Ends</div>
