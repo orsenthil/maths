@@ -99,16 +99,10 @@
   }
   .card p{max-width:64ch;}
   .card p.tight{margin-bottom:0;}
+  .steps{margin:0;padding-left:1.3em;max-width:56ch;}
+  .steps li{margin-bottom:6px;}
+  .steps li:last-child{margin-bottom:0;}
 
-  .controls{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;}
-  .control-group{display:flex;flex-direction:column;gap:6px;}
-  .control-group.row{flex-direction:row;align-items:center;}
-  .control-group label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);}
-  input[type="number"]{
-    font-family:var(--font-mono);font-size:14px;width:64px;
-    background:var(--paper);color:var(--ink);border:1px solid var(--line);
-    border-radius:8px;padding:8px 10px;
-  }
   button{
     font-family:var(--font-body);font-weight:600;font-size:13.5px;
     border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
@@ -116,31 +110,23 @@
   }
   button:hover{border-color:var(--gold);}
   button:active{transform:translateY(1px);}
-  button:focus-visible, input:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
-  #newMatchBtn{background:var(--gold);color:#241b06;border-color:var(--gold);}
+  button:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  button:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
 
-  /* ---- scoreboard ---- */
-  .scoreboard{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-bottom:24px;}
-  .score-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;border-top:4px solid var(--line);text-align:center;}
-  .score-card.p1{border-top-color:var(--gold);}
-  .score-card.p2{border-top-color:var(--teal);}
-  .score-name{font-size:12px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);}
-  .score-total{font-size:2.1rem;font-weight:600;margin-top:2px;}
-  .round-indicator{
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
-    min-width:96px;text-align:center;padding:0 6px;
+  /* ---- stats ---- */
+  .stat-bar{
+    display:flex;justify-content:center;gap:28px;margin-bottom:22px;flex-wrap:wrap;
   }
+  .stat{text-align:center;}
+  .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);}
+  .stat .v{font-family:var(--font-mono);font-size:1.6rem;font-weight:600;}
 
   /* ---- stage ---- */
   .stage{
     background:var(--paper);border:1px solid var(--line);border-radius:14px;
     padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:22px;
-    min-height:220px;justify-content:center;
+    min-height:260px;justify-content:center;
   }
-
-  .idle-prompt{font-family:var(--font-display);font-size:1.3rem;color:var(--ink-soft);text-align:center;text-wrap:balance;}
-  #startRoundBtn{background:var(--gold);color:#241b06;border-color:var(--gold);font-size:15px;padding:12px 22px;}
 
   .digits{display:flex;gap:10px;}
   .digit-tile{
@@ -150,45 +136,41 @@
     background:var(--panel);border:2px solid var(--line);color:var(--ink);
     box-shadow:0 2px 6px var(--shadow);
   }
-  .digit-tile.hidden{border-style:dashed;color:var(--ink-soft);background:var(--paper);}
-  .digit-tile.correct{border-color:var(--good);box-shadow:0 0 0 3px var(--good-soft);color:var(--good);}
+  .digit-tile.empty{border-style:dashed;color:var(--ink-soft);background:var(--paper);}
+  .digit-tile.guess{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft);color:var(--teal);}
+  .digit-tile.right{border-color:var(--good);box-shadow:0 0 0 3px var(--good-soft);color:var(--good);}
   .digit-tile.wrong{border-color:var(--bad);box-shadow:0 0 0 3px var(--bad-soft);color:var(--bad);}
   @media (max-width:480px){
     .digit-tile{width:52px;height:64px;font-size:1.6rem;}
   }
 
-  .buzzers{display:flex;gap:16px;width:100%;max-width:480px;}
-  .buzzer{
-    flex:1;padding:20px 12px;border-radius:12px;font-family:var(--font-display);
-    font-weight:600;font-size:1.05rem;border:2px solid var(--line);background:var(--paper);
-    transition:transform .12s ease;
-  }
-  .buzzer.p1{border-color:var(--gold);color:var(--gold);}
-  .buzzer.p2{border-color:var(--teal);color:var(--teal);}
-  .buzzer:hover{transform:translateY(-3px);}
-  .buzzer.p1:hover{background:var(--gold-soft);}
-  .buzzer.p2:hover{background:var(--teal-soft);}
+  .picker-block{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .picker-label{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);}
+  .picker-row{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
 
-  .answering-label{font-family:var(--font-mono);font-size:13px;color:var(--ink-soft);}
-  .answering-label .who{font-weight:600;}
-  .answering-label .who.p1{color:var(--gold);}
-  .answering-label .who.p2{color:var(--teal);}
-
-  .keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:320px;}
+  .keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:290px;}
   .keypad button{
-    width:56px;height:56px;font-family:var(--font-mono);font-size:1.2rem;font-weight:600;
+    width:50px;height:50px;font-family:var(--font-mono);font-size:1.1rem;font-weight:600;
     border-radius:10px;
   }
+  .keypad button.selected{background:var(--teal);color:#08211a;border-color:var(--teal);}
 
-  .result-line{font-size:15px;text-align:center;max-width:52ch;}
-  .result-line.good{color:var(--good);}
-  .result-line.bad{color:var(--bad);}
-  .arithmetic{font-family:var(--font-mono);font-size:14px;color:var(--ink-soft);text-align:center;}
-  #nextRoundBtn{background:var(--teal);color:#08211a;border-color:var(--teal);font-size:14.5px;padding:11px 20px;}
+  #revealBtn{background:var(--gold);color:#241b06;border-color:var(--gold);font-size:15px;padding:12px 22px;}
+  #tryAgainBtn{background:var(--teal);color:#08211a;border-color:var(--teal);font-size:14.5px;padding:11px 20px;}
 
-  .match-over{font-family:var(--font-display);font-size:1.5rem;font-weight:600;text-align:center;}
-  .match-over .winner-p1{color:var(--gold);}
-  .match-over .winner-p2{color:var(--teal);}
+  .guess-line{font-family:var(--font-display);font-size:1.25rem;font-weight:600;text-align:center;text-wrap:balance;}
+  .invalid-note{font-size:14px;color:var(--ink-soft);max-width:48ch;text-align:center;}
+
+  .confirm-row{display:flex;gap:14px;}
+  .confirm-btn{padding:10px 20px;font-size:14px;}
+  .confirm-btn.yes{border-color:var(--good);color:var(--good);}
+  .confirm-btn.yes:hover{background:var(--good-soft);}
+  .confirm-btn.no{border-color:var(--bad);color:var(--bad);}
+  .confirm-btn.no:hover{background:var(--bad-soft);}
+
+  .outcome-line{font-size:15px;text-align:center;max-width:52ch;}
+  .outcome-line.good{color:var(--good);}
+  .outcome-line.bad{color:var(--bad);}
 
   /* ---- history ---- */
   .history{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;min-height:24px;}
@@ -196,9 +178,8 @@
     font-family:var(--font-mono);font-size:11.5px;
     background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;
   }
-  .history .chip.p1{border-color:var(--gold);}
-  .history .chip.p2{border-color:var(--teal);}
-  .history .chip.wrong{opacity:0.55;text-decoration:line-through;}
+  .history .chip.wrong{border-color:var(--bad);opacity:0.75;}
+  .history .chip.right{border-color:var(--good);}
 
   /* ---- explain ---- */
   details.explain summary{
@@ -213,12 +194,6 @@
   .explain-body .results-list{font-family:var(--font-mono);font-size:13.5px;color:var(--ink-soft);}
 
   .foot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);}
-
-  @media (max-width:560px){
-    .scoreboard{grid-template-columns:1fr;}
-    .round-indicator{order:-1;}
-    .buzzers{flex-direction:column;}
-  }
 </style>
 </head>
 <body>
@@ -226,39 +201,26 @@
   <a class="back-link" href="index.html">← All puzzles</a>
 
   <header>
-    <p class="eyebrow">A two-player mental-math duel</p>
+    <p class="eyebrow">A mind-reading number trick</p>
     <h1>The Vanishing Digit</h1>
-    <p class="dek">Pick a 3-digit number, reverse it, subtract the smaller from the larger — and somehow, seeing just two of the three digits in the answer is enough to know the third. Both of you race to call it first.</p>
+    <p class="dek">Think of any 3-digit number. Reverse it. Subtract the smaller result from the larger. Tell me just the first two digits of what's left, and I'll tell you the third — every single time.</p>
   </header>
 
   <section class="card">
     <h2>How to play</h2>
-    <p class="tight">Hit "New round" to generate a hidden calculation. Two of its three digits show up on screen — the third is missing. Whoever buzzes in first gets one shot at the missing digit: guess right and the point is yours, guess wrong and it passes straight to your opponent. First to <span id="targetDisplay" class="mono">5</span> points wins the match.</p>
-  </section>
-
-  <section class="card setup">
-    <div class="controls">
-      <div class="control-group">
-        <label for="targetScore">First to</label>
-        <div class="control-group row" style="gap:8px;">
-          <input type="number" id="targetScore" min="1" max="20" value="5">
-          <button id="newMatchBtn">New match</button>
-        </div>
-      </div>
-    </div>
+    <ol class="steps">
+      <li>Think of any 3-digit number — keep it to yourself.</li>
+      <li>Write it backwards.</li>
+      <li>Subtract the smaller of the two numbers from the larger.</li>
+      <li>Below, tell me the first two digits of that result.</li>
+    </ol>
+    <p class="tight">I'll guess the digit you left out — no calculator needed on my end.</p>
   </section>
 
   <section class="card">
-    <div class="scoreboard">
-      <div class="score-card p1" id="scoreP1">
-        <div class="score-name">Player 1</div>
-        <div class="score-total mono" id="totalP1">0</div>
-      </div>
-      <div class="round-indicator" id="roundIndicator">Round 1</div>
-      <div class="score-card p2" id="scoreP2">
-        <div class="score-name">Player 2</div>
-        <div class="score-total mono" id="totalP2">0</div>
-      </div>
+    <div class="stat-bar">
+      <div class="stat"><div class="k">Attempts</div><div class="v mono" id="statAttempts">0</div></div>
+      <div class="stat"><div class="k">Correct</div><div class="v mono" id="statCorrect">0</div></div>
     </div>
 
     <div class="stage" id="stage"></div>
@@ -270,9 +232,9 @@
     <summary>How does this work?</summary>
     <div class="explain-body">
       <p>Write your 3-digit number as digits <em>a, b, c</em>, so the number itself is 100a + 10b + c. Reversed, it's 100c + 10b + a. Subtract one from the other and the middle digit cancels out completely — you're left with exactly 99 × (a − c).</p>
-      <p>Since a and c are single digits, that difference between them is always somewhere from 1 to 9. So the final result can only ever be one of nine numbers:</p>
-      <p class="results-list">099, 198, 297, 396, 495, 594, 693, 792, 891</p>
-      <p>Add up the digits of any one of them — they all come to 18. That's the whole trick: once two digits are on the table, the third is just 18 minus their sum.</p>
+      <p>Since a and c are single digits, that difference between them is always somewhere from 1 to 9 (or 0, if you happened to pick a number whose first and last digit already matched). So the final result can only ever be one of these:</p>
+      <p class="results-list">000, 099, 198, 297, 396, 495, 594, 693, 792, 891</p>
+      <p>Add up the digits of any of the nonzero ones — they all come to 18. That's the whole trick: once two digits are on the table, the third is just 18 minus their sum (and if you tell me "00", I already know the third digit has to be 0).</p>
     </div>
   </details>
 
@@ -285,231 +247,193 @@
 (function(){
   "use strict";
 
-  var scores = {1:0, 2:0};
-  var target = 5;
-  var round = 1;
+  var attempts = 0, correct = 0;
   var history = [];
-  var phase = 'idle';   // idle | clue | answering | result | matchover
-  var puzzle = null;
-  var buzzedPlayer = null;
-  var lastGuess = null;
-  var lastCorrect = null;
+  var phase = 'input';   // input | guessed | confirmed
+  var chosen = {d1:null, d2:null};
+  var guessValue = null;
+  var guessValid = true;
+  var wasRight = null;
 
   var el = {
-    targetScore: document.getElementById('targetScore'),
-    targetDisplay: document.getElementById('targetDisplay'),
-    newMatchBtn: document.getElementById('newMatchBtn'),
-    totalP1: document.getElementById('totalP1'),
-    totalP2: document.getElementById('totalP2'),
-    scoreP1: document.getElementById('scoreP1'),
-    scoreP2: document.getElementById('scoreP2'),
-    roundIndicator: document.getElementById('roundIndicator'),
+    statAttempts: document.getElementById('statAttempts'),
+    statCorrect: document.getElementById('statCorrect'),
     stage: document.getElementById('stage'),
     historyRow: document.getElementById('historyRow')
   };
 
-  function randInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
-
-  function generatePuzzle(){
-    var a = randInt(1,9);
-    var c = randInt(0,9);
-    while(c === a){ c = randInt(0,9); }
-    var b = randInt(0,9);
-    var secret = 100*a + 10*b + c;
-    var reversed = 100*c + 10*b + a;
-    var bigger = Math.max(secret, reversed);
-    var smaller = Math.min(secret, reversed);
-    var diff = bigger - smaller;
-    var diffStr = String(diff).padStart(3, '0');
-    return {
-      a:a, b:b, c:c, secret:secret, reversed:reversed,
-      bigger:bigger, smaller:smaller, diff:diff, diffStr:diffStr,
-      known:[diffStr[0], diffStr[1]],
-      hidden: parseInt(diffStr[2], 10)
-    };
-  }
-
-  function startNewMatch(){
-    target = Math.max(1, Math.min(20, parseInt(el.targetScore.value,10) || 5));
-    el.targetScore.value = target;
-    el.targetDisplay.textContent = target;
-    scores = {1:0, 2:0};
-    round = 1;
-    history = [];
-    startRound();
-  }
-
-  function startRound(){
-    puzzle = null;
-    buzzedPlayer = null;
-    lastGuess = null;
-    lastCorrect = null;
-    phase = 'idle';
+  function pickDigit(which, d){
+    if(phase !== 'input') return;
+    chosen[which] = d;
     render();
   }
 
-  function revealClue(){
-    puzzle = generatePuzzle();
-    phase = 'clue';
-    render();
-  }
-
-  function buzz(player){
-    if(phase !== 'clue') return;
-    buzzedPlayer = player;
-    phase = 'answering';
-    render();
-  }
-
-  function submitDigit(d){
-    if(phase !== 'answering') return;
-    lastGuess = d;
-    lastCorrect = (d === puzzle.hidden);
-    if(lastCorrect){
-      scores[buzzedPlayer]++;
+  function reveal(){
+    if(chosen.d1 === null || chosen.d2 === null) return;
+    var sum = chosen.d1 + chosen.d2;
+    if(chosen.d1 === 0 && chosen.d2 === 0){
+      guessValue = 0;
+      guessValid = true;
+    } else {
+      guessValue = 18 - sum;
+      guessValid = guessValue >= 0 && guessValue <= 9;
     }
-    history.push({round:round, player:buzzedPlayer, correct:lastCorrect, guess:d, hidden:puzzle.hidden});
-    phase = 'result';
+    phase = 'guessed';
     render();
   }
 
-  function nextRound(){
-    if(scores[1] >= target || scores[2] >= target){
-      phase = 'matchover';
-      render();
-      return;
-    }
-    round++;
-    startRound();
+  function confirm(isRight){
+    wasRight = isRight;
+    attempts++;
+    if(isRight) correct++;
+    history.push({d1:chosen.d1, d2:chosen.d2, guess:guessValue, right:isRight});
+    phase = 'confirmed';
+    render();
   }
 
-  function playerName(n){ return 'Player ' + n; }
+  function tryAgain(){
+    chosen = {d1:null, d2:null};
+    guessValue = null;
+    guessValid = true;
+    wasRight = null;
+    phase = 'input';
+    render();
+  }
+
+  function digitPicker(which, label){
+    var block = document.createElement('div');
+    block.className = 'picker-block';
+    var lab = document.createElement('div');
+    lab.className = 'picker-label';
+    lab.textContent = label;
+    block.appendChild(lab);
+    var pad = document.createElement('div');
+    pad.className = 'keypad';
+    for(var d=0; d<=9; d++){
+      (function(d){
+        var b = document.createElement('button');
+        b.textContent = d;
+        if(chosen[which] === d) b.classList.add('selected');
+        b.addEventListener('click', function(){ pickDigit(which, d); });
+        pad.appendChild(b);
+      })(d);
+    }
+    block.appendChild(pad);
+    return block;
+  }
 
   function render(){
-    el.totalP1.textContent = scores[1];
-    el.totalP2.textContent = scores[2];
-    el.scoreP1.classList.toggle('current', buzzedPlayer === 1 && (phase==='answering'));
-    el.scoreP2.classList.toggle('current', buzzedPlayer === 2 && (phase==='answering'));
-    el.roundIndicator.textContent = (phase === 'matchover') ? 'Match over' : ('Round ' + round);
-
+    el.statAttempts.textContent = attempts;
+    el.statCorrect.textContent = correct;
     el.stage.innerHTML = '';
 
-    if(phase === 'idle'){
-      var wrap = document.createElement('div');
-      wrap.style.display = 'flex';
-      wrap.style.flexDirection = 'column';
-      wrap.style.alignItems = 'center';
-      wrap.style.gap = '18px';
-      var prompt = document.createElement('div');
-      prompt.className = 'idle-prompt';
-      prompt.textContent = 'Ready when you are.';
-      var btn = document.createElement('button');
-      btn.id = 'startRoundBtn';
-      btn.textContent = 'New round';
-      btn.addEventListener('click', revealClue);
-      wrap.appendChild(prompt);
-      wrap.appendChild(btn);
-      el.stage.appendChild(wrap);
-      return;
-    }
-
-    if(phase === 'clue' || phase === 'answering' || phase === 'result'){
+    if(phase === 'input'){
       var digitsRow = document.createElement('div');
       digitsRow.className = 'digits';
-      [0,1,2].forEach(function(i){
+      [chosen.d1, chosen.d2].forEach(function(v){
         var tile = document.createElement('div');
-        tile.className = 'digit-tile';
-        if(i < 2){
-          tile.textContent = puzzle.known[i];
-        } else {
-          if(phase === 'result'){
-            tile.textContent = puzzle.hidden;
-            tile.classList.add(lastCorrect ? 'correct' : 'wrong');
-          } else {
-            tile.classList.add('hidden');
-            tile.textContent = '?';
-          }
-        }
+        tile.className = 'digit-tile' + (v === null ? ' empty' : '');
+        tile.textContent = v === null ? '?' : v;
         digitsRow.appendChild(tile);
       });
       el.stage.appendChild(digitsRow);
+
+      var pickerRow = document.createElement('div');
+      pickerRow.className = 'picker-row';
+      pickerRow.appendChild(digitPicker('d1', 'First digit'));
+      pickerRow.appendChild(digitPicker('d2', 'Second digit'));
+      el.stage.appendChild(pickerRow);
+
+      var btn = document.createElement('button');
+      btn.id = 'revealBtn';
+      btn.textContent = 'Guess my digit';
+      btn.disabled = (chosen.d1 === null || chosen.d2 === null);
+      btn.addEventListener('click', reveal);
+      el.stage.appendChild(btn);
+      return;
     }
 
-    if(phase === 'clue'){
-      var buzzers = document.createElement('div');
-      buzzers.className = 'buzzers';
-      [1,2].forEach(function(p){
-        var b = document.createElement('button');
-        b.className = 'buzzer p' + p;
-        b.textContent = playerName(p) + ' — buzz in';
-        b.addEventListener('click', function(){ buzz(p); });
-        buzzers.appendChild(b);
-      });
-      el.stage.appendChild(buzzers);
-    }
+    var digitsRow2 = document.createElement('div');
+    digitsRow2.className = 'digits';
+    [chosen.d1, chosen.d2].forEach(function(v){
+      var tile = document.createElement('div');
+      tile.className = 'digit-tile';
+      tile.textContent = v;
+      digitsRow2.appendChild(tile);
+    });
+    var guessTile = document.createElement('div');
+    guessTile.className = 'digit-tile ' + (phase === 'confirmed' ? (wasRight ? 'right' : 'wrong') : 'guess');
+    guessTile.textContent = guessValid ? guessValue : '?';
+    digitsRow2.appendChild(guessTile);
+    el.stage.appendChild(digitsRow2);
 
-    if(phase === 'answering'){
-      var label = document.createElement('div');
-      label.className = 'answering-label';
-      label.innerHTML = '<span class="who p' + buzzedPlayer + '">' + playerName(buzzedPlayer) + '</span> buzzed in — pick the missing digit:';
-      el.stage.appendChild(label);
-
-      var keypad = document.createElement('div');
-      keypad.className = 'keypad';
-      for(var d=0; d<=9; d++){
-        (function(d){
-          var kb = document.createElement('button');
-          kb.textContent = d;
-          kb.addEventListener('click', function(){ submitDigit(d); });
-          keypad.appendChild(kb);
-        })(d);
+    if(phase === 'guessed'){
+      var gline = document.createElement('div');
+      gline.className = 'guess-line';
+      if(guessValid){
+        gline.textContent = 'Your missing digit is ' + guessValue + '.';
+      } else {
+        gline.textContent = "That combination doesn't fit the pattern.";
       }
-      el.stage.appendChild(keypad);
+      el.stage.appendChild(gline);
+
+      if(!guessValid){
+        var note = document.createElement('div');
+        note.className = 'invalid-note';
+        note.textContent = 'Double-check the subtraction — the result should always be 000 or one of 099, 198, 297, 396, 495, 594, 693, 792, 891.';
+        el.stage.appendChild(note);
+        var retry = document.createElement('button');
+        retry.id = 'tryAgainBtn';
+        retry.textContent = 'Try again';
+        retry.addEventListener('click', tryAgain);
+        el.stage.appendChild(retry);
+        return;
+      }
+
+      var ask = document.createElement('div');
+      ask.className = 'guess-line';
+      ask.style.fontSize = '0.95rem';
+      ask.style.color = 'var(--ink-soft)';
+      ask.textContent = 'Was I right?';
+      el.stage.appendChild(ask);
+
+      var row = document.createElement('div');
+      row.className = 'confirm-row';
+      var yesBtn = document.createElement('button');
+      yesBtn.className = 'confirm-btn yes';
+      yesBtn.textContent = 'Yes';
+      yesBtn.addEventListener('click', function(){ confirm(true); });
+      var noBtn = document.createElement('button');
+      noBtn.className = 'confirm-btn no';
+      noBtn.textContent = 'No';
+      noBtn.addEventListener('click', function(){ confirm(false); });
+      row.appendChild(yesBtn);
+      row.appendChild(noBtn);
+      el.stage.appendChild(row);
     }
 
-    if(phase === 'result'){
-      var line = document.createElement('div');
-      line.className = 'result-line ' + (lastCorrect ? 'good' : 'bad');
-      line.textContent = lastCorrect
-        ? (playerName(buzzedPlayer) + ' got it — the missing digit was ' + puzzle.hidden + '.')
-        : (playerName(buzzedPlayer) + ' guessed ' + lastGuess + ', but it was ' + puzzle.hidden + '.');
-      el.stage.appendChild(line);
-
-      var math = document.createElement('div');
-      math.className = 'arithmetic';
-      math.textContent = puzzle.bigger + ' − ' + puzzle.smaller + ' = ' + puzzle.diffStr + '  (from ' + puzzle.secret + ' reversed to ' + puzzle.reversed + ')';
-      el.stage.appendChild(math);
-
-      var nextBtn = document.createElement('button');
-      nextBtn.id = 'nextRoundBtn';
-      nextBtn.textContent = (scores[1] >= target || scores[2] >= target) ? 'See match result' : 'Next round';
-      nextBtn.addEventListener('click', nextRound);
-      el.stage.appendChild(nextBtn);
-    }
-
-    if(phase === 'matchover'){
-      var winner = scores[1] > scores[2] ? 1 : 2;
-      var mo = document.createElement('div');
-      mo.className = 'match-over';
-      mo.innerHTML = '<span class="winner-p' + winner + '">' + playerName(winner) + ' wins</span> the match, ' + scores[winner] + '–' + scores[winner===1?2:1] + '!';
-      el.stage.appendChild(mo);
+    if(phase === 'confirmed'){
+      var outcome = document.createElement('div');
+      outcome.className = 'outcome-line ' + (wasRight ? 'good' : 'bad');
+      outcome.textContent = wasRight
+        ? 'Knew it.'
+        : "Huh — that shouldn't happen if the subtraction was right. Worth double-checking your arithmetic.";
+      el.stage.appendChild(outcome);
 
       var again = document.createElement('button');
-      again.id = 'startRoundBtn';
-      again.textContent = 'Rematch';
-      again.addEventListener('click', startNewMatch);
+      again.id = 'tryAgainBtn';
+      again.textContent = 'Try another number';
+      again.addEventListener('click', tryAgain);
       el.stage.appendChild(again);
     }
 
     el.historyRow.innerHTML = history.map(function(h){
-      var cls = 'chip p' + h.player + (h.correct ? '' : ' wrong');
-      return '<span class="' + cls + '">R' + h.round + ' P' + h.player + ' ' + h.guess + '</span>';
+      var cls = 'chip ' + (h.right ? 'right' : 'wrong');
+      return '<span class="' + cls + '">' + h.d1 + '' + h.d2 + '? → ' + h.guess + '</span>';
     }).join('');
   }
 
-  el.newMatchBtn.addEventListener('click', startNewMatch);
-
-  startNewMatch();
+  render();
 })();
 </script>
 </body>
