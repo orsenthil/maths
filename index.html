@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efe8d6; --panel:#e5ddc6; --ink:#231d14; --ink-soft:#5d5640;
+    --line:#cebf9c; --gold:#8a5f16; --teal:#2a6b59;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#161209; --panel:#1f1a10; --ink:#f1e8d2; --ink-soft:#b7ab89;
+      --line:#3c331f; --gold:#e0ab52; --teal:#74c3ab;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',-apple-system,sans-serif;line-height:1.55;}
+  .wrap{max-width:720px;margin:0 auto;padding:56px 20px 64px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 10px;}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(2rem,5vw,2.6rem);margin:0 0 14px;text-wrap:balance;}
+  .dek{max-width:60ch;color:var(--ink);margin:0 0 36px;}
+  ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  a.entry{
+    display:block;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:10px;padding:18px 20px;text-decoration:none;color:var(--ink);
+    transition:transform .12s ease, border-color .12s ease;
+  }
+  a.entry:hover{transform:translateY(-2px);border-color:var(--gold);}
+  a.entry .name{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.15rem;margin-bottom:4px;}
+  a.entry .desc{font-size:14px;color:var(--ink-soft);}
+  .foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Senthil Kumaran</p>
+  <h1>Maths</h1>
+  <p class="dek">Small interactive pieces built around math and game-theory puzzles.</p>
+  <ul>
+    <li>
+      <a class="entry" href="take-the-ends.html">
+        <div class="name">Take the Ends</div>
+        <div class="desc">A two-player coin-row game — play it, then work out when the first player can force at least a tie.</div>
+      </a>
+    </li>
+  </ul>
+  <p class="foot">More to come.</p>
+</div>
+</body>
+</html>
