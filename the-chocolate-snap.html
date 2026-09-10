@@ -222,7 +222,7 @@
     <div class="history" id="historyRow"></div>
   </section>
 
-  <details class="card explain">
+  <details class="card explain" id="explainSection" hidden>
     <summary>Why does it always come out the same?</summary>
     <div class="explain-body">
       <p>Every single break turns one piece into two — no exceptions, no matter which piece you choose or where along it you snap. So each break adds exactly one piece to the table. A whole bar starts as 1 piece and has to end as rows × columns separate unit squares, so the number of breaks is forced to be exactly rows × columns − 1. Always.</p>
@@ -259,7 +259,8 @@
     liveLine: document.getElementById('liveLine'),
     barStage: document.getElementById('barStage'),
     belowStage: document.getElementById('belowStage'),
-    historyRow: document.getElementById('historyRow')
+    historyRow: document.getElementById('historyRow'),
+    explainSection: document.getElementById('explainSection')
   };
 
   function clampDim(v){ return Math.max(1, Math.min(8, v)); }
@@ -323,6 +324,7 @@
     if(correct) stats.correct++;
     history.unshift({ rows:rows, cols:cols, total:total, prediction:prediction, actual:actual, correct:correct });
     history = history.slice(0, 10);
+    el.explainSection.hidden = false;
   }
 
   function render(){
