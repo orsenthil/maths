@@ -11,20 +11,21 @@
 <style>
   :root{
     --paper:#ffffff;
-    --panel:#e5ddc6;
-    --panel-2:#ddd3b6;
-    --ink:#231d14;
-    --ink-soft:#5d5640;
-    --line:#cebf9c;
-    --gold:#8a5f16;
-    --gold-soft:#8a5f1622;
+    --panel:#f5f4f1;
+    --panel-2:#ebe9e4;
+    --ink:#201d1a;
+    --ink-soft:#6d6a63;
+    --line:#e1ded7;
+    --gold:#33312c;
+    --gold-soft:#33312c1a;
+    --gold-text:#faf8f5;
     --teal:#2a6b59;
     --teal-soft:#2a6b5922;
     --good:#2f7a43;
     --good-soft:#2f7a4322;
     --bad:#a13b2e;
     --bad-soft:#a13b2e22;
-    --shadow:rgba(35,29,20,0.18);
+    --shadow:rgba(30,28,25,0.14);
     --font-display:'Fraunces',Georgia,serif;
     --font-body:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
     --font-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
@@ -32,13 +33,14 @@
   @media (prefers-color-scheme: dark){
     :root{
       --paper:#161209;
-      --panel:#1f1a10;
-      --panel-2:#292115;
-      --ink:#f1e8d2;
-      --ink-soft:#b7ab89;
-      --line:#3c331f;
-      --gold:#e0ab52;
-      --gold-soft:#e0ab5222;
+      --panel:#1f1e1b;
+      --panel-2:#29271f;
+      --ink:#f1efe9;
+      --ink-soft:#aca89f;
+      --line:#3a3833;
+      --gold:#d8d4c9;
+      --gold-soft:#d8d4c91a;
+      --gold-text:#201d1a;
       --teal:#74c3ab;
       --teal-soft:#74c3ab22;
       --good:#7ecb8f;
@@ -157,7 +159,7 @@
   }
   .keypad button.selected{background:var(--teal);color:#08211a;border-color:var(--teal);}
 
-  #revealBtn{background:var(--gold);color:#241b06;border-color:var(--gold);font-size:15px;padding:12px 22px;}
+  #revealBtn{background:var(--gold);color:var(--gold-text);border-color:var(--gold);font-size:15px;padding:12px 22px;}
   #tryAgainBtn{background:var(--teal);color:#08211a;border-color:var(--teal);font-size:14.5px;padding:11px 20px;}
 
   .guess-line{font-family:var(--font-display);font-size:1.25rem;font-weight:600;text-align:center;text-wrap:balance;}
